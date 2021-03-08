@@ -19,5 +19,8 @@
   "homepage": "https://github.com/osushi-suke6/devChallenges-ImageUploader#readme",
   "devDependencies": {
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "fastify": "^3.13.0"
   }
 }

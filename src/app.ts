@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+import fastifyMultipart from 'fastify-multipart';
 import fastifyStatic from 'fastify-static';
 import path from 'path';
 import pointOfView from 'point-of-view';
@@ -11,6 +12,7 @@ const PORT = 8080;
 const logger = pino(pino.destination('./logs/test.log'));
 const app = fastify({ logger });
 
+app.register(fastifyMultipart);
 app.register(fastifyStatic, { root: path.join(__dirname, '../static'), prefix: '/static/' })
 app.register(pointOfView, { engine: { pug } })
 app.register(indexRouter, { prefix: '/' });

@@ -5,9 +5,10 @@ body {
 }
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
-    padding-bottom: 80px;
     box-sizing: border-box;
 }
 
@@ -21,11 +22,7 @@ body {
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+    margin: auto;
 }
 
 .containerHeader h1 {
@@ -88,7 +85,6 @@ body {
     width: 100%;
     text-align: center;
     padding: 24px;
-    position: absolute;
     bottom: 0;
 }
 

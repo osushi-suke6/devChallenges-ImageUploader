@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #FAFAFB;
+}
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.containerHeader h1 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #4F4F4F;
+    margin: 0 0 16px 0;
+}
+
+.containerHeader p {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0 0 32px 0;
+    color: #828282;
+}
+
+.containerBody {
+    background: #F6F8FB;
+    border: 1px dashed #97BEF4;
+    box-sizing: border-box;
+    border-radius: 12px;
+    text-align: center;
+    justify-content: center;
+}
+
+.containerBody .imageContainer {
+    width: 100%;
+    padding: 35px;
+}
+
+.containerBody .textContainer {
+    width: 100%;
+    color: #BDBDBD;
+}
+
+.containerBody .textContainer p {
+    margin-bottom: 35px;
+}
+
+.containerFooter>p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #BDBDBD;
+}
+
+.chooseAFileButton {
+    background-color: #2F80ED;
+    border-radius: 8px;
+    color: white;
+    width: 150px;
+    padding: 10px;
+    margin: auto;
+}
+
+.chooseAFileButton>p {
+    margin: 0;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 24px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0;
+    color: #A9A9A9;
+}

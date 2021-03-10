@@ -14,7 +14,8 @@ const logger = pino(pino.destination('./logs/test.log'));
 const app = fastify({ logger });
 
 app.register(fastifyMultipart);
-app.register(fastifyStatic, { root: path.join(__dirname, '../static'), prefix: '/static/' });
+app.register(fastifyStatic, { root: path.join(__dirname, '../public'), prefix: '/' });
+
 app.register(pointOfView, { engine: { pug } });
 app.register(indexRouter, { prefix: '/' });
 app.register(imagesApiRouter, { prefix: '/api/images' });

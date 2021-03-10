@@ -21,7 +21,7 @@ const router: FastifyPluginAsync = async (app) => {
             }
         }
 
-        reply.code(400).send('Invalid id');
+        reply.code(404).send('Invalid id');
     });
 
     app.post('/', async (req, reply) => {

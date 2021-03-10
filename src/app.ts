@@ -12,6 +12,8 @@ const PORT = 8080;
 const logger = pino(pino.destination('./logs/test.log'));
 const app = fastify({ logger });
 
+
+
 app.register(fastifyMultipart);
 app.register(fastifyStatic, { root: path.join(__dirname, '../static'), prefix: '/static/' })
 app.register(pointOfView, { engine: { pug } })

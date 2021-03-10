@@ -5,7 +5,6 @@ import path from 'path';
 import util from 'util';
 import { FastifyPluginAsync } from 'fastify';
 
-
 const router: FastifyPluginAsync = async (app) => {
     app.get('/', async (_req, reply) => {
         reply.send('test');
@@ -27,7 +26,7 @@ const router: FastifyPluginAsync = async (app) => {
 
             await uploadFile(data.file);
 
-            reply.code(200).send('Image file was sent.');
+            reply.code(201).send('Uploaded your image file.');
 
         } catch (error) {
             console.log(error);

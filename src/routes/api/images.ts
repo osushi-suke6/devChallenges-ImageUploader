@@ -7,10 +7,6 @@ import { FastifyPluginAsync } from 'fastify';
 import mongoose from 'mongoose';
 import Image from '../../schemas/imageSchema';
 
-interface IParams {
-    id: string
-}
-
 const router: FastifyPluginAsync = async (app) => {
     app.get<{ Params: IParams }>('/:id', async (req, reply) => {
         const id = req.params.id;
@@ -63,6 +59,10 @@ async function uploadFile(file: NodeJS.ReadableStream, extension: string) {
     } catch (error) {
         throw new Error(error.message);
     }
+}
+
+interface IParams {
+    id: string
 }
 
 export default router;

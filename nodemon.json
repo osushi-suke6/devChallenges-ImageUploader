@@ -3,5 +3,5 @@
         "src"
     ],
     "ext": "ts",
-    "exec": "npx tsc && node dist/app.js"
+    "exec": "npx tsc -b tsconfig.server.json && npx tsc -b tsconfig.client.json && node dist/app.js"
 }

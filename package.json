@@ -4,7 +4,11 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "devstart": "nodemon"
+    "build": "npm run compile && npm run bundle",
+    "bundle": "npx webpack --config webpack.config.js",
+    "compile": "npx tsc -b tsconfig.server.json && npx tsc -b tsconfig.client.json",
+    "devstart": "nodemon",
+    "start": "node ./dist/server/app.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +26,11 @@
     "@types/node": "^14.14.32",
     "@types/pino": "^6.3.6",
     "@types/pug": "^2.0.4",
-    "typescript": "^4.2.3"
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "typescript": "^4.2.3",
+    "webpack": "^5.25.0",
+    "webpack-cli": "^4.5.0"
   },
   "dependencies": {
     "dayjs": "^1.10.4",
@@ -32,6 +40,8 @@
     "mongoose": "^5.11.19",
     "pino": "^6.11.1",
     "point-of-view": "^4.14.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }

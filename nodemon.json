@@ -2,6 +2,6 @@
     "watch": [
         "src"
     ],
-    "ext": "ts",
-    "exec": "npx tsc -b tsconfig.server.json && npx tsc -b tsconfig.client.json && node dist/app.js"
+    "ext": "ts, tsx",
+    "exec": "npm run build && npm run start"
 }

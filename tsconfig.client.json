@@ -2,6 +2,12 @@
     "compilerOptions": {
         "target": "ES2020",
         "module": "ESNEXT",
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -17,7 +23,7 @@
         "noUnusedLocals": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        "outDir": "public/static/js"
+        "outDir": "dist/client"
     },
     "include": [
         "src/client/**/*"

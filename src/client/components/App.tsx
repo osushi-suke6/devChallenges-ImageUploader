@@ -1,36 +1,34 @@
-import React from 'react';
-import Dropzone, { DropzoneState } from 'react-dropzone';
+import React, { useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 
-class App extends React.Component {
-    onDrop(files: any) {
-        console.log(files);
-    }
+const App = () => {
+    const accept = 'image/jpeg, image/png';
+    const maxFiles = 1;
+    const maxSize = 5 * 1024 * 1024;
 
-    render() {
-        return (
-            <Dropzone onDrop={this.onDrop}>
-                {this.createDropzone}
-            </Dropzone>
-        );
-    }
+    const onDrop = useCallback((acceptedFiles) => {
+        console.log(acceptedFiles);
 
-    createDropzone({ getRootProps, getInputProps, isDragActive }: DropzoneState) {
-        return (
-            <div {...getRootProps()} className="dropzone">
-                <input {...getInputProps()} />
-                <div className="imageContainer">
-                    <img src="/static/images/image.svg" alt="Drag and Drop your Image here" />
-                </div>
-                <div className="textContainer">
-                    {isDragActive ? (
-                        <p>Drop the image here</p>
-                    ) : (
-                        <p>Drag &amp; Drop your image here</p>
-                    )}
-                </div>
+        //const creatObjectURL = (window.URL || window.webkitURL).createObjectURL;
+    }, []);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ accept, maxFiles, maxSize, onDrop });
+
+    return (
+        <div {...getRootProps()} className="dropzone">
+            <input {...getInputProps()} />
+            <div className="imageContainer">
+                <img src="/static/images/image.svg" alt="Drag and Drop your Image here" />
             </div>
-        )
-    }
-}
+            <div className="textContainer">
+                {isDragActive ? (
+                    <p>Drop the image here</p>
+                ) : (
+                    <p>Drag &amp; Drop your image here</p>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default App;

@@ -80,10 +80,24 @@ body {
     color: white;
     width: 150px;
     padding: 10px;
-    margin: auto;
+    margin-bottom: 10px;
+}
+
+.uploadButton {
+    background-color: green;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .chooseAFileButton>p {
+    margin: 0;
+}
+
+.uploadButton>p {
     margin: 0;
 }
 

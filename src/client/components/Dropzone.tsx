@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const Dropzone = () => {
+const Dropzone = React.forwardRef<HTMLInputElement>((_props, ref) => {
     const [image, setImage] = useState('/static/images/image.svg');
     const [isDropped, setIsDropped] = useState(false);
 
@@ -25,7 +25,7 @@ const Dropzone = () => {
 
     return (
         <div {...getRootProps()} className="dropzone">
-            <input {...getInputProps()} />
+            <input {...getInputProps()} ref={ref} />
             <div className="imageContainer">
                 <img src={image} alt="Drag and Drop your Image here" className={isDropped ? 'dropped' : ''} />
             </div>
@@ -40,6 +40,6 @@ const Dropzone = () => {
             )}
         </div>
     );
-};
+});
 
 export default Dropzone;

@@ -10,8 +10,6 @@ const Dropzone = () => {
     const maxSize = 5 * 1024 * 1024;
 
     const onDrop = useCallback((acceptedFiles) => {
-        console.log(acceptedFiles);
-
         const creatObjectURL = (window.URL || window.webkitURL).createObjectURL;
 
         let src = '/static/images/image.svg';

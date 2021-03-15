@@ -4,4 +4,4 @@ import Dropzone from './components/Dropzone';
 import ChooseAFileButton from './components/ChooseAFileButton';
 
 ReactDOM.render(<Dropzone />, document.getElementById('dropzone'));
-ReactDOM.render(<ChooseAFileButton />, document.getElementById('chooseAFileButton'));
+ReactDOM.render(<ChooseAFileButton input={document.getElementsByTagName('input')[0]} />, document.getElementById('chooseAFileButton'));

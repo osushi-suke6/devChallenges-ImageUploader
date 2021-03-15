@@ -1,10 +1,13 @@
 // import axios from 'axios';
 import React, { useCallback } from 'react';
 
-const ChooseAFileButton = () => {
+interface IProps {
+    input: HTMLInputElement
+}
+
+const ChooseAFileButton = (props: IProps) => {
     const onClick = useCallback(() => {
-        const input = document.getElementsByTagName('input')[0];
-        input.click();
+        props.input.click();
     }, []);
 
     return (

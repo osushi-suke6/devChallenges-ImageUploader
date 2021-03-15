@@ -118,4 +118,7 @@ dist
 # Static javascript files
 public/static/js/
 
+# Static upload files
+public/uploads/ 
+
 # End of https://www.toptal.com/developers/gitignore/api/node

@@ -53,6 +53,10 @@ body {
     padding: 35px;
 }
 
+.containerBody .imageContainer img.dropped {
+    width: 100%;
+}
+
 .containerBody .textContainer {
     width: 100%;
     color: #BDBDBD;

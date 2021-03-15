@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Dropzone from './components/Dropzone';
 
-ReactDOM.render(<App />, document.getElementById('dropzone'));
+ReactDOM.render(<Dropzone />, document.getElementById('dropzone'));

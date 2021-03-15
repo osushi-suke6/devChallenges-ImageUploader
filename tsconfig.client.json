@@ -9,7 +9,6 @@
             "dom.iterable",
             "esnext"
         ],
-        "sourceMap": true,
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,

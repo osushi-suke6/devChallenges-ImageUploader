@@ -5,7 +5,7 @@ const Dropzone = React.forwardRef<HTMLInputElement>((_props, ref) => {
     const [image, setImage] = useState('/static/images/image.svg');
     const [isDropped, setIsDropped] = useState(false);
 
-    const accept = 'image/jpeg, image/png';
+    const accept = 'image/jpeg, image/png, image/gif';
     const maxFiles = 1;
     const maxSize = 5 * 1024 * 1024;
 

@@ -75,6 +75,7 @@ body {
 
 .chooseAFileButton {
     background-color: #2F80ED;
+    border: none;
     border-radius: 8px;
     color: white;
     width: 150px;

@@ -26,8 +26,8 @@ const router: FastifyPluginAsync = async (app) => {
 
     app.post('/', async (req, reply) => {
         try {
-            const data = await req.file();
-            if (!data.mimetype.match(/^image\//)) reply.code(400).send('The file is not an image file.');
+            const data = await req.file({ limits: { fileSize: 1 * 1024 * 1024 } });
+            if (!data || !data.mimetype.match(/^image\//)) reply.code(400).send('400 Bad Request');
 
             const extension = data.mimetype.split('/')[1];
             await uploadFile(data.file, extension);
@@ -35,7 +35,9 @@ const router: FastifyPluginAsync = async (app) => {
             reply.code(201).send('Uploaded your image file.');
 
         } catch (error) {
-            console.log(error);
+            if (typeof (error) === typeof (app.multipartErrors.RequestFileTooLargeError)) {
+                reply.code(413).send('413 Request Entity Too Large');
+            }
 
             reply.code(500).send();
         }

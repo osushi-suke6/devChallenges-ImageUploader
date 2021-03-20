@@ -83,6 +83,10 @@ body {
     margin-bottom: 10px;
 }
 
+.chooseAFileButton:disabled {
+    background-color: #808080;
+}
+
 .uploadButton {
     background-color: green;
     border: none;
@@ -91,6 +95,10 @@ body {
     width: 150px;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.uploadButton:disabled {
+    background-color: #808080;
 }
 
 .chooseAFileButton>p {

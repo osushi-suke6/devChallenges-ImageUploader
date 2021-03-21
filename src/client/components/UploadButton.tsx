@@ -1,17 +1,18 @@
 import axios from 'axios';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 interface IProps {
-    input: HTMLInputElement
+    file: File | null
 }
 
 const UploadButton = (props: IProps) => {
-    const onClick = useCallback(() => {
+    const onClick = () => {
         const formData = new FormData();
 
-        if (!props.input.files) return;
+        console.log(props.file);
+        if (!props.file) return;
 
-        formData.append('file', props.input.files[0]);
+        formData.append('file', props.file);
         axios.post('/api/images', formData)
             .then(res => {
                 console.log(res);
@@ -19,10 +20,10 @@ const UploadButton = (props: IProps) => {
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    };
 
     return (
-        <button className="uploadButton" onClick={onClick}>
+        <button className="uploadButton" onClick={onClick} disabled={!props.file}>
             <p>Upload</p>
         </button>
     );

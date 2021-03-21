@@ -1,31 +1,40 @@
-import React, { useCallback, useState } from 'react';
+import React, { forwardRef, useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const Dropzone = React.forwardRef<HTMLInputElement>((_props, ref) => {
-    const [image, setImage] = useState('/static/images/image.svg');
+const DEFAULT_FILE_PATH = '/static/images/image.svg';
+
+const Dropzone = forwardRef<HTMLInputElement, { onInputChange: (files: FileList) => void }>((props, inputRef) => {
+    const [image, setImage] = useState(DEFAULT_FILE_PATH);
     const [isDropped, setIsDropped] = useState(false);
 
     const accept = 'image/jpeg, image/png, image/gif';
     const maxFiles = 1;
     const maxSize = 5 * 1024 * 1024;
 
+    const creatObjectURL = (window.URL || window.webkitURL).createObjectURL;
+
     const onDrop = useCallback((acceptedFiles) => {
-        const creatObjectURL = (window.URL || window.webkitURL).createObjectURL;
-
-        let src = '/static/images/image.svg';
-        if (acceptedFiles.length > 0) {
-            src = creatObjectURL(acceptedFiles[0]);
-        }
-
-        setImage(src);
-        setIsDropped(src !== '/static/images/image.svg');
+        acceptedFiles = acceptedFiles as FileList;
+        onChange(acceptedFiles);
     }, []);
+
+    const onChange = (files: FileList | null) => {
+        if (files) {
+            let src = DEFAULT_FILE_PATH;
+            src = creatObjectURL(files[0]);
+
+            setImage(src);
+            setIsDropped(src !== DEFAULT_FILE_PATH);
+
+            props.onInputChange(files);
+        }
+    }
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ accept, maxFiles, maxSize, onDrop });
 
     return (
-        <div {...getRootProps()} className="dropzone">
-            <input {...getInputProps()} ref={ref} />
+        <div {...getRootProps({ className: 'dropzone' })}>
+            <input {...getInputProps()} ref={inputRef} onChange={(event) => { onChange(event.target.files) }} />
             <div className="imageContainer">
                 <img src={image} alt="Drag and Drop your Image here" className={isDropped ? 'dropped' : ''} />
             </div>

@@ -1,16 +1,16 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 interface IProps {
-    input: HTMLInputElement
+    input: HTMLInputElement | null
 }
 
 const ChooseAFileButton = (props: IProps) => {
-    const onClick = useCallback(() => {
-        props.input.click();
-    }, []);
+    const handleClick = () => {
+        props.input?.click();
+    };
 
     return (
-        <button className="chooseAFileButton" onClick={onClick}>
+        <button className="chooseAFileButton" onClick={handleClick}>
             <p>Choose a file</p>
         </button>
     );

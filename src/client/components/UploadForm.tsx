@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Dropzone from './Dropzone';
 import ChooseAFileButton from './ChooseAFileButton';
 import UploadButton from './UploadButton';
+import LinkWithCopyButton from './LinkWithCopyButton';
 
 const UploadForm = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -52,8 +53,7 @@ const UploadForm = () => {
                         </div>
                     </div>
                     <div className='containerFooter'>
-                        <p>{uploadedFilePath}</p>
-                        <button><p>Copy Link</p></button>
+                        <LinkWithCopyButton filePath={uploadedFilePath} />
                     </div>
                 </div>
             ) : (

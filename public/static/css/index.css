@@ -57,6 +57,7 @@ body {
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
+    margin-bottom: 25px;
 }
 
 .containerBody .uploadedImageContainer img.uploaded {
@@ -134,4 +135,12 @@ body {
 
 .footer a {
     color: inherit;
+}
+
+.copyLink input {
+    display: inline-block;
+}
+
+.copyLink button {
+    display: inline-block;
 }

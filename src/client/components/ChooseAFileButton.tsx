@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IProps {
-    input: HTMLInputElement | null
+    input: HTMLInputElement | null,
 }
 
 const ChooseAFileButton = (props: IProps) => {

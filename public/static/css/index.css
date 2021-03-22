@@ -39,7 +39,7 @@ body {
     color: #828282;
 }
 
-.containerBody {
+.containerBody.drop {
     background: #F6F8FB;
     border: 1px dashed #97BEF4;
     box-sizing: border-box;
@@ -51,6 +51,17 @@ body {
 .containerBody .imageContainer {
     width: 100%;
     padding: 35px;
+}
+
+.containerBody .uploadedImageContainer {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.containerBody .uploadedImageContainer img.uploaded {
+    width: 100%;
+    object-fit: cover;
 }
 
 .containerBody .imageContainer img.dropped {

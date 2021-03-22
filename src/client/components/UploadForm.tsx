@@ -7,33 +7,76 @@ const UploadForm = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [input, setInput] = useState<HTMLInputElement | null>(null);
     const [file, setFile] = useState<File | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
+    const [uploadedFilePath, setUploadedFilePath] = useState('');
+    const [isFailure, setIsFailure] = useState(false);
 
-    const onInputChange = (files: FileList) => {
+    const onChangeInput = (files: FileList) => {
         setFile(files[0]);
     };
+
+    const onClickUploadButton = () => {
+        console.log('onClicked');
+        setIsUploading(true);
+    }
+
+    const onSuccessUpload = (filePath: string) => {
+        setUploadedFilePath(filePath);
+        setIsUploading(false);
+    }
+
+    const onFailureUpload = () => {
+        setIsFailure(true);
+        setIsUploading(false);
+    }
 
     useEffect(() => {
         setInput(inputRef.current);
     }, [inputRef]);
 
     return (
-        <div className='uploadForm'>
-            <div className='containerHeader'>
-                <h1>Upload your image</h1>
-                <p>File should be Jpeg, Png, ...</p>
-            </div>
-            <div className='containerBody'>
-                <Dropzone ref={inputRef} onInputChange={onInputChange}></Dropzone>
-            </div>
-            <div className='containerFooter'>
-                <p>Or</p>
-            </div>
-            <div>
-                <ChooseAFileButton input={input} />
-            </div>
-            <div>
-                <UploadButton file={file} />
-            </div>
+        <div className='uploadForm' >
+            {isUploading ? (
+                <div className='uploadingText'>
+                    <p>Uploading...</p>
+                    <img src='/static/images/uploading.gif' alt='uploading animation' />
+                </div>
+            ) : uploadedFilePath !== '' ? (
+                <div>
+                    <div className='containerHeader'>
+                        <h1>Uploaded Successfully!</h1>
+                    </div >
+                    <div className='containerBody'>
+                        <div className="uploadedImageContainer">
+                            <img src={uploadedFilePath} alt="Uploaded image" className='uploaded' />
+                        </div>
+                    </div>
+                    <div className='containerFooter'>
+                        <p>{uploadedFilePath}</p>
+                        <button><p>Copy Link</p></button>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <div className='containerHeader'>
+                        {isFailure ? (<h1>Faild to upload</h1>) : (<h1>Upload your image</h1>)}
+                        <p>File should be Jpeg, Png, ...</p>
+                    </div >
+                    <div className='containerBody drop'>
+                        <Dropzone ref={inputRef} onChangeInput={onChangeInput}></Dropzone>
+                    </div>
+                    <div className='containerFooter'>
+                        <p>Or</p>
+                        <div>
+                            <ChooseAFileButton input={input} />
+                        </div>
+                        <div>
+                            <UploadButton file={file} onClick={onClickUploadButton} onSuccess={onSuccessUpload} onFailure={onFailureUpload} />
+                        </div>
+                    </div>
+                </div >
+            )
+            }
         </div >
     );
 };

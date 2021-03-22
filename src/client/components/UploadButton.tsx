@@ -2,7 +2,10 @@ import axios from 'axios';
 import React from 'react';
 
 interface IProps {
-    file: File | null
+    file: File | null,
+    onClick: () => void,
+    onSuccess: (filePath: string) => void,
+    onFailure: () => void
 }
 
 const UploadButton = (props: IProps) => {
@@ -12,13 +15,20 @@ const UploadButton = (props: IProps) => {
         console.log(props.file);
         if (!props.file) return;
 
+        props.onClick();
+
         formData.append('file', props.file);
         axios.post('/api/images', formData)
             .then(res => {
-                console.log(res);
+                if (res.status === 201) {
+                    props.onSuccess(res.data);
+                } else {
+                    props.onFailure();
+                }
             })
             .catch(error => {
                 console.log(error);
+                props.onFailure();
             });
     };
 

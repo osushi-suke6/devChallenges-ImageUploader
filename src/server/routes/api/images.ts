@@ -30,9 +30,9 @@ const router: FastifyPluginAsync = async (app) => {
             if (!data || !data.mimetype.match(/^image\//)) reply.code(400).send('400 Bad Request');
 
             const extension = data.mimetype.split('/')[1];
-            await uploadFile(data.file, extension);
+            const filePath = await uploadFile(data.file, extension);
 
-            reply.code(201).send('Uploaded your image file.');
+            reply.code(201).send(filePath);
 
         } catch (error) {
             if (typeof (error) === typeof (app.multipartErrors.RequestFileTooLargeError)) {
@@ -57,6 +57,8 @@ async function uploadFile(file: NodeJS.ReadableStream, extension: string) {
         if (!fs.existsSync(path.join('public', dir))) fs.mkdirSync(path.join('public', dir));
 
         await pump(file, fs.createWriteStream(path.join('public', filePath)));
+
+        return filePath;
 
     } catch (error) {
         throw new Error(error.message);

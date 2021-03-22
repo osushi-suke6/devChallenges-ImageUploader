@@ -3,7 +3,7 @@ import { useDropzone } from 'react-dropzone';
 
 const DEFAULT_FILE_PATH = '/static/images/image.svg';
 
-const Dropzone = forwardRef<HTMLInputElement, { onInputChange: (files: FileList) => void }>((props, inputRef) => {
+const Dropzone = forwardRef<HTMLInputElement, { onChangeInput: (files: FileList) => void }>((props, inputRef) => {
     const [image, setImage] = useState(DEFAULT_FILE_PATH);
     const [isDropped, setIsDropped] = useState(false);
 
@@ -26,7 +26,7 @@ const Dropzone = forwardRef<HTMLInputElement, { onInputChange: (files: FileList)
             setImage(src);
             setIsDropped(src !== DEFAULT_FILE_PATH);
 
-            props.onInputChange(files);
+            props.onChangeInput(files);
         }
     }
 

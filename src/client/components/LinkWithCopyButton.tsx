@@ -5,13 +5,16 @@ interface IProps {
 }
 
 const LinkWithCopyButton = (props: IProps) => {
+    const filePath = props.filePath.replace('\\', '/');
+    const url = `${location.protocol}//${location.host}${filePath}`
+
     const handleClick = async () => {
-        await navigator.clipboard.writeText(props.filePath);
+        await navigator.clipboard.writeText(url);
     };
 
     return (
         <div className='copyLink'>
-            <input type='text' value={props.filePath} readOnly={true} />
+            <input type='text' value={url} readOnly={true} />
             <button className="copyLinkButton" onClick={handleClick}>
                 <p>Copy Link</p>
             </button>

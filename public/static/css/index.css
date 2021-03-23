@@ -137,10 +137,35 @@ body {
     color: inherit;
 }
 
+.copyLink {
+    display: flex;
+    background: #F6F8FB;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 30px;
+    padding-left: 10px;
+}
+
 .copyLink input {
-    display: inline-block;
+    display: block;
+    width: 70%;
+    line-height: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: 4F4F4F;
 }
 
 .copyLink button {
-    display: inline-block;
+    display: block;
+    width: 30%;
+    height: 100%;
+    background-color: #2F80ED;
+    border: none;
+    border-radius: 8px;
+    color: white;
 }

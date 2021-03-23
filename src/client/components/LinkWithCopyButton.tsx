@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const LinkWithCopyButton = (props: IProps) => {
-    const filePath = props.filePath.replace('\\', '/');
+    const filePath = props.filePath.replace(/\\/, '/');
     const url = `${location.protocol}//${location.host}${filePath}`
 
     const handleClick = async () => {

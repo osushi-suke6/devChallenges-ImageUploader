@@ -17,7 +17,6 @@ const UploadForm = () => {
     };
 
     const onClickUploadButton = () => {
-        console.log('onClicked');
         setIsUploading(true);
     }
 
